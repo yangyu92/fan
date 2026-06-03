@@ -17,16 +17,6 @@ class _FanGradeWidgetState extends State<FanGradeWidget> {
   final FanBtnManager stamps = FanBtnManager();
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTapDown: stamps.onTapDown,

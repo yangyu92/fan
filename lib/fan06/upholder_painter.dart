@@ -55,7 +55,6 @@ class UpholderPainter extends CustomPainter {
       ..isAntiAlias = true;
     double width = 12;
     double height = 60;
-    canvas.translate(0, 0);
     Path rectanglePath = Path()
       ..addRRect(
         RRect.fromRectAndRadius(
