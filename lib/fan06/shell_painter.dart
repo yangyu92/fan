@@ -65,20 +65,5 @@ class ShellPainter extends CustomPainter {
         paintShell
           ..style = PaintingStyle.fill
           ..color = const Color(0xFF656565));
-    // TextPainter textPainter = TextPainter(
-    //   text: TextSpan(
-    //     text: "Fan",
-    //     style: TextStyle(
-    //       fontSize: radius / 6 / 1.8,
-    //       color: Colors.black,
-    //     ),
-    //   ),
-    //   textAlign: TextAlign.center,
-    //   textDirection: TextDirection.ltr,
-    // );
-    // textPainter.layout();
-    // Size textSize = textPainter.size; // 尺寸必须在布局后获取
-    // textPainter.paint(
-    //     canvas, Offset(-textSize.width / 2, -textSize.height / 2));
   }
 }
