@@ -36,38 +36,26 @@ class _FanWidgetState extends State<FanWidget>
     _ticker = createTicker(_tick);
   }
 
-  // 切换档位
+  // 切换档位 → 目标角速度(rad/s)
   void chageGrade(FanGradeType type) {
-    switch (type) {
-      case FanGradeType.off:
-        pm.updateGrade(0);
-        break;
-      case FanGradeType.grade1:
-        pm.updateGrade(6);
-        break;
-      case FanGradeType.grade2:
-        pm.updateGrade(8);
-        break;
-      case FanGradeType.grade3:
-        pm.updateGrade(10);
-        break;
-      default:
-    }
+    const targets = {
+      FanGradeType.off: 0.0,
+      FanGradeType.grade1: 6.0,
+      FanGradeType.grade2: 8.0,
+      FanGradeType.grade3: 10.0,
+    };
+    pm.updateGrade(targets[type] ?? 0);
     upholderNum.value = type.index;
     if (!_ticker.isActive) {
       _ticker.start();
     }
   }
 
-  // 风扇页旋转帧动画
-  // iPhone13 Pro支持120帧, 此处帧率不一样的设备转速会不一样
+  // 风扇页旋转帧动画。基于物理仿真的 dt 累计角度,跨设备帧率一致
   void _tick(Duration duration) {
-    if (pm.speed < 0) {
-      if (_ticker.isActive) {
-        _ticker.stop();
-      }
-    } else {
-      pm.tick();
+    pm.tick(duration);
+    if (!pm.isAnimating && _ticker.isActive) {
+      _ticker.stop();
     }
   }
 

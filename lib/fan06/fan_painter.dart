@@ -84,7 +84,7 @@ class FanPainter extends CustomPainter {
   }
 
   void _drawBlades(Canvas canvas, Size size) {
-    canvas.rotate(pi / 180 * manage.rotation);
+    canvas.rotate(manage.rotation);
     canvas.drawPath(pathBlades, paintBlades);
   }
 }
